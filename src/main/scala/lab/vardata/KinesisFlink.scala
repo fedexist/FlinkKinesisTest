@@ -15,7 +15,7 @@ import org.apache.flink.streaming.connectors.kinesis.config.{AWSConfigConstants,
 import org.apache.flink.streaming.util.serialization.SimpleStringSchema
 import org.apache.hadoop.hbase.io.compress.Compression
 import org.apache.hadoop.hbase.{HColumnDescriptor, HTableDescriptor, TableName}
-import play.api.libs.json.Json
+import play.api.libs.json.{JsValue, Json}
 
 object KinesisFlink extends App {
 
@@ -83,9 +83,10 @@ object KinesisFlink extends App {
     // TODO: classe StreamEvent(event : JsValue)
     println(s"Adding Kinesis source $stream_name")
     val kinesis = env.addSource(
-      new FlinkKinesisConsumer[String](stream_name, new SimpleStringSchema(), consumerConfig)).map{
-      r => Json.parse(r)
-    }.name("json-parser").uid("json-parser")
+      new FlinkKinesisConsumer[JsValue](stream_name, new JSONDeserializationSchema(), consumerConfig))
+      .name("json-parser").uid("json-parser")
+
+    //kinesis.print().name("printer")
 
     val banknoteEvents = kinesis
       .filter(j => j("deviceType").toString() == "M3").name("filter")
