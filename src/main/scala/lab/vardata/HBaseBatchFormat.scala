@@ -25,10 +25,10 @@ class HBaseBatchFormat(byteTableDesc : Array[Byte], confPath : Path)
         )}.asJavaCollection)
 
     val results : Array[AnyRef] = new Array[AnyRef](list.size())
-    LOG.debug(s"Task $taskNumber: Preparing to write batch on ${table.getName} a list of ${list.size()}")
+    LOG.info(s"Task $taskNumber: Preparing to write batch on ${table.getName} a list of ${list.size()}")
 
     table.batch(list, results)
-    LOG.debug(s"Task $taskNumber: Batch write on ${table.getName} executed successfully")
+    LOG.info(s"Task $taskNumber: Batch write on ${table.getName} executed successfully")
 
   }
 }

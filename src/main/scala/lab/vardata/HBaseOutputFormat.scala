@@ -32,7 +32,7 @@ abstract class HBaseOutputFormat[T](byteTableDesc : Array[Byte], confPath : Path
   @throws[IOException]
   def close(): Unit = {
     table.close()
-    LOG.debug(s"Task $taskNumber: Closed connection to ${table.getName}")
+    LOG.info(s"Task $taskNumber: Closed connection to ${table.getName}")
   }
 
 
@@ -46,7 +46,7 @@ abstract class HBaseOutputFormat[T](byteTableDesc : Array[Byte], confPath : Path
       admin.createTable(tableDescriptor)
 
     table = connection.getTable(tableDescriptor.getTableName)
-    LOG.debug(s"Task $taskNumber: Opening connection to ${table.getName} to execute $numTasks tasks on Single Put job")
+    LOG.info(s"Task $taskNumber: Opening connection to ${table.getName} to execute $numTasks tasks on Single Put job")
 
   }
 }

@@ -22,7 +22,7 @@ case class HBaseBatchWindow() extends RichAllWindowFunction[StreamEvent, BatchCo
         )
       )
 
-    LOG.debug(s"Collecting and preparing to write batch: ${in_batch.batch.size} elements")
+    LOG.info(s"Collecting and preparing to write batch: ${in_batch.batch.size} elements")
 
     out.collect(in_batch)
 

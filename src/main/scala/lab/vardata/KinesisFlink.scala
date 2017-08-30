@@ -73,7 +73,7 @@ object KinesisFlink extends App {
     consumerConfig.put(AWSConfigConstants.AWS_REGION, aws_region)
     consumerConfig.put(AWSConfigConstants.AWS_ACCESS_KEY_ID, aws_access_id)
     consumerConfig.put(AWSConfigConstants.AWS_SECRET_ACCESS_KEY, aws_secret_key)
-    consumerConfig.put(ConsumerConfigConstants.STREAM_INITIAL_POSITION, InitialPosition.LATEST)
+    consumerConfig.put(ConsumerConfigConstants.STREAM_INITIAL_POSITION, "LATEST")
     consumerConfig.put(ConsumerConfigConstants.SHARD_GETRECORDS_INTERVAL_MILLIS, "1000")
 
     // get the execution environment
