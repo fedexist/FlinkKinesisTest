@@ -12,6 +12,12 @@ val flinkVersion = "1.3.2"
 libraryDependencies += "org.apache.flink" %% "flink-scala" % flinkVersion % "provided"
 libraryDependencies += "org.apache.flink" %% "flink-streaming-scala" % flinkVersion % "provided"
 libraryDependencies += "org.apache.flink" %% "flink-connector-kinesis" % flinkVersion
+libraryDependencies += "org.joda" % "joda-convert" % "1.8.3"
+libraryDependencies += "com.typesafe.play" %% "play-json" % "2.6.2"
+libraryDependencies += "org.apache.flink" %% "flink-hbase" % flinkVersion
+libraryDependencies += "org.apache.hbase" % "hbase-common" % "1.3.0"
+libraryDependencies += "org.apache.hbase" % "hbase-client" % "1.3.0"
+
 
 assemblyMergeStrategy in assembly := {
   //case PathList("META-INF", "services", "org.apache.hadoop.fs.FileSystem") => MergeStrategy.filterDistinctLines
